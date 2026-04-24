@@ -16,21 +16,21 @@ function Home() {
             title: "Wedding",
             subtitle: "Sarah & Michael",
             date: "15 June, 2024",
-            image: "/public/image/wedding.png",
+            image: "/image/wedding.png",
         },
         {
             id: 2,
             title: "Birthday",
             subtitle: "Emma's 30th",
             date: "22 August, 2024",
-            image: "/public/image/birthday.png",
+            image: "/image/birthday.png",
         },
         {
             id: 3,
             title: "Puja Ceremony",
             subtitle: "Ganesh Chaturthi",
             date: "19 September, 2024",
-            image: "/public/image/ganesha.png",
+            image: "/image/ganesha.png",
         },
     ];
 
