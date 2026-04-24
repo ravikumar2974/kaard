@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/templates" element={<TemplateGallery />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path='/wedding' element={<WeddingMain />} />
+        <Route path='/wedding/*' element={<WeddingMain />} />
         <Route path="/wedding/:cardSlug" element={<WeddingCardPage />} />
         <Route path="/wedding/:cardSlug/to/:guestName" element={<WeddingCardPage />} />
       </Routes>
