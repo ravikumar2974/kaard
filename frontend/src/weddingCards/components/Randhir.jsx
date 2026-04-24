@@ -3,17 +3,11 @@ import "./Randhir.css";
 
 import ganeshaImg from "./assets/image.png";
 import musicFile from "./assets/india_happy-indian-wedding-490659.mp3";
-
-import { useParams } from "react-router-dom";
+import GuestInvitation from "../GuestInvitation";
 
 const Randhir = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
-
-    const { guestName } = useParams();
-    const displayName = guestName 
-    ? guestName.split("-").slice(0, -1).join(" ").replace(/\b\w/g, (char) => char.toUpperCase()) : "";
-
     useEffect(() => {
         const revealElements = document.querySelectorAll(".reveal");
 
@@ -181,13 +175,7 @@ const Randhir = () => {
                         <p>क्या आप भी ऐसा डिजिटल निमंत्रण बनवाना चाहते हैं?</p>
                         <a href="tel:+917061042974">📞 +91 7061042974</a>
                     </div>
-                    {displayName && 
-                    ( 
-                    <div className="guest-invitation">
-                        <h3>विशेष आमंत्रण</h3>
-                        <p> प्रिय <strong>{displayName}</strong> जी, <br /> आपको एवं आपके परिवार को हमारे शुभ विवाह समारोह में सादर आमंत्रित किया जाता है। </p>
-                         </div> 
-                        )}
+                    <GuestInvitation />
                 </footer>
             </div>
         </div>
