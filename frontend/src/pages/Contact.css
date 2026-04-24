@@ -1,0 +1,269 @@
+/* =========================
+   CONTACT PAGE
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contact-page {
+    position: relative;
+    min-height: 100vh;
+    background: #ffffff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    isolation: isolate;
+}
+
+/* ========== BACKGROUND ANIMATION ========== */
+.contact-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.blur-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    animation: floatSlow 18s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.blur-1 {
+    width: 450px;
+    height: 450px;
+    top: -150px;
+    left: -150px;
+    background: rgba(255, 0, 0, 0.08);
+}
+
+.blur-2 {
+    width: 550px;
+    height: 550px;
+    bottom: -180px;
+    right: -180px;
+    background: rgba(0, 0, 0, 0.04);
+    animation-delay: -8s;
+}
+
+/* ========== CONTAINER ========== */
+.contact-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 850px;
+}
+
+/* ========== CARD ========== */
+.contact-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 60px 50px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 35px 75px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(255, 0, 0, 0.08);
+}
+
+/* ========== BADGE ========== */
+.contact-badge {
+    display: inline-block;
+    padding: 10px 22px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+/* ========== HEADING ========== */
+.contact-card h1 {
+    font-size: 54px;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+}
+
+.highlight-red {
+    color: #ff0000;
+    position: relative;
+    display: inline-block;
+}
+
+.highlight-red::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ff0000, transparent);
+}
+
+/* ========== DESCRIPTION ========== */
+.contact-description {
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(0, 0, 0, 0.65);
+    max-width: 620px;
+    margin: 0 auto 40px;
+}
+
+/* ========== BUTTONS ========== */
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.35s ease;
+    border: 1.5px solid transparent;
+}
+
+/* Primary Button */
+.contact-button.primary {
+    background: #000000;
+    color: #ffffff;
+}
+
+.contact-button.primary:hover {
+    background: #ff0000;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(255, 0, 0, 0.2);
+}
+
+/* Secondary Button */
+.contact-button.secondary {
+    background: transparent;
+    color: #000000;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.contact-button.secondary:hover {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+    transform: translateY(-3px);
+}
+
+/* WhatsApp Button */
+.contact-button.whatsapp {
+    background: #25D366;
+    color: #ffffff;
+}
+
+.contact-button.whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.25);
+}
+
+/* ========== CONTACT INFO ========== */
+.contact-info {
+    padding-top: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.contact-info p {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.7);
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+/* ========== ANIMATION ========== */
+@keyframes floatSlow {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(25px, -25px) scale(1.05);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.95);
+    }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .contact-card {
+        padding: 45px 30px;
+    }
+
+    .contact-card h1 {
+        font-size: 38px;
+    }
+
+    .contact-description {
+        font-size: 16px;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-button {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-page {
+        padding: 60px 15px;
+    }
+
+    .contact-card {
+        padding: 35px 22px;
+        border-radius: 24px;
+    }
+
+    .contact-card h1 {
+        font-size: 30px;
+    }
+
+    .contact-badge {
+        font-size: 11px;
+        padding: 8px 18px;
+    }
+
+    .contact-description {
+        font-size: 15px;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+    }
+}

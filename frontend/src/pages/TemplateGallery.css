@@ -1,0 +1,305 @@
+/* =========================
+   TEMPLATE GALLERY STYLES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gallery-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 0;
+    background: #ffffff;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* ========== ANIMATED BACKGROUND ========== */
+.gallery-section::before,
+.gallery-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+    animation: floatGlow 18s ease-in-out infinite;
+}
+
+.gallery-section::before {
+    width: 450px;
+    height: 450px;
+    top: -120px;
+    left: -120px;
+    background: rgba(255, 0, 0, 0.08);
+}
+
+.gallery-section::after {
+    width: 550px;
+    height: 550px;
+    bottom: -180px;
+    right: -150px;
+    background: rgba(0, 0, 0, 0.04);
+    animation-delay: -8s;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ========== HEADER ========== */
+.gallery-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.gallery-header h1 {
+    font-size: 58px;
+    font-weight: 700;
+    color: #000000;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.highlight-gold {
+    color: #ff0000;
+    position: relative;
+    display: inline-block;
+}
+
+.highlight-gold::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ff0000, transparent);
+}
+
+.gallery-header p {
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.6);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ========== TEMPLATE GRID ========== */
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
+
+/* ========== CARD ========== */
+.template-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    border-radius: 28px;
+    padding: 35px 30px;
+    min-height: 320px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.template-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 0, 0, 0.04),
+        transparent 40%,
+        rgba(0, 0, 0, 0.02)
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.template-card:hover::before {
+    opacity: 1;
+}
+
+.template-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: rgba(255, 0, 0, 0.2);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(255, 0, 0, 0.08);
+}
+
+/* Top Accent Line */
+.template-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #ff0000, transparent);
+    border-radius: 0 0 10px 10px;
+}
+
+/* Category Badge */
+.card-category {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.template-card:hover .card-category {
+    background: rgba(255, 0, 0, 0.08);
+    color: #ff0000;
+    border-color: rgba(255, 0, 0, 0.15);
+}
+
+/* Title */
+.template-card h3 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.25;
+    margin-bottom: 30px;
+    letter-spacing: -0.02em;
+    flex-grow: 1;
+}
+
+/* Button */
+.btn-outline-black {
+    background: transparent;
+    color: #000000;
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    font-family: inherit;
+    align-self: flex-start;
+}
+
+.template-card:hover .btn-outline-black {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline-black:hover {
+    background: #ff0000 !important;
+    border-color: #ff0000 !important;
+    color: #ffffff !important;
+}
+
+/* ========== ANIMATION ========== */
+@keyframes floatGlow {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30px, -20px) scale(1.05);
+    }
+    66% {
+        transform: translate(-25px, 20px) scale(0.95);
+    }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+    .gallery-section {
+        padding: 80px 0;
+    }
+
+    .gallery-header h1 {
+        font-size: 46px;
+    }
+
+    .template-grid {
+        gap: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-header {
+        margin-bottom: 50px;
+    }
+
+    .gallery-header h1 {
+        font-size: 36px;
+    }
+
+    .gallery-header p {
+        font-size: 16px;
+    }
+
+    .template-card {
+        min-height: 280px;
+        padding: 28px 24px;
+    }
+
+    .template-card h3 {
+        font-size: 26px;
+    }
+
+    .btn-outline-black {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 94%;
+    }
+
+    .gallery-header h1 {
+        font-size: 30px;
+    }
+
+    .gallery-header p {
+        font-size: 15px;
+    }
+
+    .template-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .template-card {
+        min-height: 260px;
+    }
+
+    .template-card h3 {
+        font-size: 24px;
+    }
+}

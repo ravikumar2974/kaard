@@ -1,0 +1,448 @@
+/* =========================
+   RANDHIR WEDDING INVITATION
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #fff8f0 0%, #fffdf9 100%);
+    color: #4a2c2a;
+    overflow-x: hidden;
+}
+
+/* Main Container */
+.randhir-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #fff8f0 0%, #fffdf9 100%);
+}
+
+/* Decorative Background */
+.mandala-bg {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center,
+            rgba(212, 175, 55, 0.08) 0%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.25;
+    animation: floatOrb 15s ease-in-out infinite;
+    z-index: 0;
+}
+
+.orb-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: -100px;
+    background: #ff6b6b;
+}
+
+.orb-2 {
+    width: 350px;
+    height: 350px;
+    bottom: 10%;
+    right: -100px;
+    background: #d4af37;
+    animation-delay: -7s;
+}
+
+/* Music Button */
+.music-toggle {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
+    transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1) rotate(8deg);
+}
+
+/* Content Container */
+.randhir-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 80px 20px 60px;
+}
+
+.ganesh-mantra {
+    font-size: 1.5rem;
+    color: #b8860b;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.ganesha-wrapper {
+    margin: 20px auto 30px;
+}
+
+.ganesha-image {
+    width: 180px;
+    max-width: 100%;
+    animation: floatImage 4s ease-in-out infinite;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
+}
+
+/* Couple Hearts */
+.hearts-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.name-heart {
+    position: relative;
+    text-align: center;
+}
+
+.heart-shape {
+    width: 100px;
+    height: 90px;
+    background: linear-gradient(135deg, #ff4d6d, #c9184a);
+    position: relative;
+    transform: rotate(-45deg);
+    margin: 0 auto 20px;
+    animation: pulseHeart 2s infinite;
+}
+
+.heart-shape::before,
+.heart-shape::after {
+    content: "";
+    width: 100px;
+    height: 90px;
+    background: inherit;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart-shape::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart-shape::after {
+    top: 0;
+    left: 50px;
+}
+
+.name-heart span {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #8b0000;
+}
+
+/* Title Banner */
+.title-banner h1 {
+    font-size: 3.5rem;
+    color: #8b0000;
+    margin: 30px 0 20px;
+    line-height: 1.2;
+}
+
+.hero-quote {
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: #5a3e36;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    color: #b8860b;
+    text-decoration: none;
+    animation: bounce 2s infinite;
+}
+
+/* Common Section */
+section {
+    margin: 70px 0;
+    padding: 45px 35px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    color: #8b0000;
+    margin-bottom: 35px;
+}
+
+/* Couple Section */
+.person-card {
+    text-align: center;
+    padding: 25px;
+    margin: 20px 0;
+}
+
+.avatar {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.person-card h3 {
+    font-size: 2rem;
+    color: #8b0000;
+    margin-bottom: 10px;
+}
+
+.person-card p {
+    font-size: 1.2rem;
+    color: #b8860b;
+    margin-bottom: 12px;
+}
+
+.person-card h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #444;
+    line-height: 1.7;
+}
+
+.heart-divider {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 20px 0;
+    animation: pulseHeart 2s infinite;
+}
+
+/* Events */
+.events-section {
+    text-align: center;
+}
+
+.event-card {
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #fff7e6, #fff);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    transition: all 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+}
+
+.event-card.featured {
+    background: linear-gradient(135deg, #8b0000, #c21807);
+    color: #fff;
+}
+
+.event-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+/* Location & Note */
+.location-section,
+.note-section,
+.footer-section {
+    text-align: center;
+}
+
+.location-section p,
+.note-section p,
+.footer-section p {
+    font-size: 1.15rem;
+    line-height: 2;
+}
+
+/* Contact Button */
+.contact-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 30px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(37, 211, 102, 0.3);
+}
+
+/* Creator Box */
+.creator-box {
+    margin-top: 35px;
+    padding: 25px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #fff3cd, #fff8e1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.creator-box a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #8b0000;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* Animations */
+@keyframes floatOrb {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-30px) scale(1.1);
+    }
+}
+
+@keyframes floatImage {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes pulseHeart {
+    0%, 100% {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(-45deg) scale(1.08);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title-banner h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero-quote {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 30px 20px;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .name-heart span {
+        font-size: 1.4rem;
+    }
+
+    .heart-shape {
+        width: 80px;
+        height: 72px;
+    }
+
+    .heart-shape::before,
+    .heart-shape::after {
+        width: 80px;
+        height: 72px;
+    }
+
+    .heart-shape::before {
+        top: -40px;
+    }
+
+    .heart-shape::after {
+        left: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding-top: 60px;
+    }
+
+    .title-banner h1 {
+        font-size: 2rem;
+    }
+
+    .ganesha-image {
+        width: 140px;
+    }
+
+    .music-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+    }
+}
