@@ -3,11 +3,18 @@ import "./Randhir.css";
 
 import ganeshaImg from "./assets/image.png";
 import musicFile from "./assets/india_happy-indian-wedding-490659.mp3";
+import heartPicture from "./assets/heart picture.png";
+import groomImg from "./assets/randhir.png";
+import brideImg from "./assets/khushbu.png";
 import GuestInvitation from "../GuestInvitation";
 
 const Randhir = () => {
     const [isPlaying, setIsPlaying] = useState(false);
+    const [curtainOpen, setCurtainOpen] = useState(false);
+    const [showCurtains, setShowCurtains] = useState(true);
     const audioRef = useRef(null);
+
+    // Scroll reveal animation
     useEffect(() => {
         const revealElements = document.querySelectorAll(".reveal");
 
@@ -15,8 +22,9 @@ const Randhir = () => {
             revealElements.forEach((element) => {
                 const windowHeight = window.innerHeight;
                 const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
 
-                if (elementTop < windowHeight - 100) {
+                if (elementTop < windowHeight - elementVisible) {
                     element.classList.add("active");
                 }
             });
@@ -27,6 +35,18 @@ const Randhir = () => {
 
         return () => window.removeEventListener("scroll", revealOnScroll);
     }, []);
+
+    // Auto-play music after curtain opens
+    const tryPlayMusic = async () => {
+        if (!audioRef.current) return;
+        try {
+            await audioRef.current.play();
+            setIsPlaying(true);
+        } catch (error) {
+            console.log("Autoplay prevented:", error);
+            setIsPlaying(false);
+        }
+    };
 
     const toggleMusic = async () => {
         if (!audioRef.current) return;
@@ -44,8 +64,53 @@ const Randhir = () => {
         }
     };
 
+    const openCurtains = () => {
+        if (curtainOpen) return;
+        setCurtainOpen(true);
+        setTimeout(() => {
+            tryPlayMusic();
+        }, 500);
+        setTimeout(() => {
+            setShowCurtains(false);
+        }, 3800);
+    };
+
+    // Auto-open curtains after delay
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            openCurtains();
+        }, 800);
+        return () => clearTimeout(timer);
+    }, []);
+
+    const scrollToEvents = () => {
+        const eventsSection = document.getElementById("events");
+        if (eventsSection) {
+            eventsSection.scrollIntoView({ behavior: "smooth" });
+        }
+        tryPlayMusic();
+    };
+
     return (
         <div className="randhir-page">
+            {/* Curtain Animation */}
+            {showCurtains && (
+                <div className="curtain-container">
+                    <div className={`curtain-left ${curtainOpen ? "curtain-animate-left" : ""}`}>
+                        <div className="curtain-overlay"></div>
+                    </div>
+                    <div className={`curtain-right ${curtainOpen ? "curtain-animate-right" : ""}`}>
+                        <div className="curtain-overlay"></div>
+                    </div>
+                    <div className="curtain-seal" onClick={openCurtains}>
+                        <div className="seal-ring"></div>
+                        <span className="seal-text">
+                            R <span className="ampersand">&</span> K
+                        </span>
+                    </div>
+                </div>
+            )}
+
             {/* Background Effects */}
             <div className="mandala-bg"></div>
             <div className="floating-orb orb-1"></div>
@@ -55,7 +120,7 @@ const Randhir = () => {
             <button className="music-toggle" onClick={toggleMusic}>
                 <i className={`fas ${isPlaying ? "fa-pause" : "fa-music"}`}></i>
             </button>
-            <audio ref={audioRef} loop>
+            <audio ref={audioRef} loop preload="none">
                 <source src={musicFile} type="audio/mpeg" />
             </audio>
 
@@ -65,116 +130,222 @@ const Randhir = () => {
                     <p className="ganesh-mantra">॥ श्री गणेशाय नमः ॥</p>
 
                     <div className="ganesha-wrapper">
+                        <div className="ganesha-ring"></div>
+                        <div className="ganesha-ring-dotted"></div>
                         <img src={ganeshaImg} alt="Lord Ganesha" className="ganesha-image" />
                     </div>
 
-                    <div className="hearts-container">
-                        <div className="name-heart groom-heart">
-                            <div className="heart-shape"></div>
-                            <span>रणधीर</span>
-                        </div>
-
-                        <div className="name-heart bride-heart">
-                            <div className="heart-shape"></div>
-                            <span>खुशबू</span>
-                        </div>
-                    </div>
-
-                    <div className="title-banner">
-                        <h1>शुभ वैवाहिक कार्यक्रम</h1>
+                    {/* Heart Picture Section */}
+                    <div className="heart-picture-wrapper">
+                        <div className="heart-glow"></div>
+                        <img src={heartPicture} alt="Wedding Hearts" className="heart-picture" />
                     </div>
 
                     <p className="hero-quote">
                         "मैं अपनी जिंदगी के इस नए और खूबसूरत सफर की शुरुआत करने जा रहा हूँ।
-                        इस खास मौके पर आपकी उपस्थिति मेरे लिए बहुत मायने रखती है।"
+                        इस खास मौके पर आपकी उपस्थिति का हमें बेसब्री से इंतजार रहेगा।"
                     </p>
 
-                    <a href="#couple" className="scroll-indicator">
+                    <button className="scroll-indicator" onClick={scrollToEvents}>
                         <span>Scroll</span>
                         <i className="fas fa-chevron-down"></i>
-                    </a>
+                    </button>
                 </header>
 
-                {/* Couple Section */}
+                {/* Events Section */}
+                <section id="events" className="events-section reveal">
+                    <h2>
+                        <i className="fas fa-calendar-alt"></i> कार्यक्रम
+                    </h2>
+
+                    <div className="timeline">
+                        <div className="timeline-line"></div>
+
+                        <div className="event-card">
+                            <div className="event-icon">
+                                <i className="fas fa-om"></i>
+                            </div>
+                            <div className="event-content">
+                                <h3>!! पूजा एवं मटकोर !!</h3>
+                                <p className="event-date">
+                                    <i className="far fa-calendar"></i> 27 April 2026
+                                </p>
+                                <p className="event-day">सोमवार</p>
+                            </div>
+                        </div>
+
+                        <div className="event-card">
+                            <div className="event-icon">
+                                <i className="fas fa-spa"></i>
+                            </div>
+                            <div className="event-content">
+                                <h3>!! हल्दी एवं मेहंदी !!</h3>
+                                <p className="event-date">
+                                    <i className="far fa-calendar"></i> 30 April 2026
+                                </p>
+                                <p className="event-day">गुरुवार</p>
+                            </div>
+                        </div>
+
+                        <div className="event-card featured">
+                            <div className="event-icon pulse">
+                                <i className="fas fa-ring"></i>
+                            </div>
+                            <div className="event-content">
+                                <h3>!! शुभ विवाह !!</h3>
+                                <p className="event-date">
+                                    <i className="far fa-calendar"></i> 01 May 2026
+                                </p>
+                                <p className="event-day">शुक्रवार</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Bride & Groom Section */}
                 <section id="couple" className="couple-section reveal">
                     <h2>वर - वधू</h2>
 
                     <div className="person-card">
-                        <div className="avatar">👨</div>
+                        <div className="avatar-wrapper">
+                            <img src={groomImg} alt="Groom - Randhir" className="avatar-img" />
+                        </div>
                         <h3>चि० रणधीर कुमार</h3>
-                        <p>सुपुत्र</p>
-                        <h4>श्रीमती प्रमिला देवी एवं स्व. अजय सिंह</h4>
+                        <p className="relation">सुपुत्र</p>
+                        <h4>श्रीमती प्रमिला देवी एवं स्व० अजय सिंह</h4>
+
+                        <div className="address-card">
+                            <div className="address-header">
+                                <i className="fas fa-map-marker-alt"></i>
+                                <span>स्थाई पता</span>
+                            </div>
+                            <div className="address-details">
+                                <div className="address-row">
+                                    <span className="label">ग्राम:</span>
+                                    <span className="value">अदखनी</span>
+                                </div>
+                                <div className="address-row">
+                                    <span className="label">पो०:</span>
+                                    <span className="value">सुतिहारा</span>
+                                </div>
+                                <div className="address-row">
+                                    <span className="label">थाना:</span>
+                                    <span className="value">परिहार</span>
+                                </div>
+                                <div className="address-row">
+                                    <span className="label">जिला:</span>
+                                    <span className="value">सीतामढ़ी</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="heart-divider">
-                        <span>❤️</span>
+                        <i className="fas fa-heart"></i>
                     </div>
 
                     <div className="person-card">
-                        <div className="avatar">👩</div>
-                        <h3>आयुषी कुमारी खुशबू</h3>
-                        <p>सुपुत्री</p>
-                        <h4>श्रीमती पुनीता देवी एवं श्री शंभू महतो</h4>
+                        <div className="avatar-wrapper">
+                            <img src={brideImg} alt="Bride - Khushbu" className="avatar-img" />
+                        </div>
+                        <h3>आयु० कुमारी खुशबू</h3>
+                        <p className="relation">सुपुत्री</p>
+                        <h4>श्रीमती पुनिता देवी एवं श्री शम्भु महतो</h4>
+
+                        <div className="address-card">
+                            <div className="address-header">
+                                <i className="fas fa-map-marker-alt"></i>
+                                <span>स्थाई पता</span>
+                            </div>
+                            <div className="address-details">
+                                <div className="address-row">
+                                    <span className="label">ग्राम:</span>
+                                    <span className="value">हरिहरपुर</span>
+                                </div>
+                                <div className="address-row">
+                                    <span className="label">पो०:</span>
+                                    <span className="value">कुम्हरा विशनपुर</span>
+                                </div>
+                                <div className="address-row">
+                                    <span className="label">थाना:</span>
+                                    <span className="value">डुमरा</span>
+                                </div>
+                                <div className="address-row">
+                                    <span className="label">जिला:</span>
+                                    <span className="value">सीतामढ़ी</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
-                {/* Events Section */}
-                <section className="events-section reveal">
-                    <h2>कार्यक्रम</h2>
-
-                    <div className="event-card">
-                        <h3>पूजा एवं मटकोर</h3>
-                        <p>27 April 2026 • मंगलवार</p>
-                    </div>
-
-                    <div className="event-card">
-                        <h3>हल्दी एवं मेहंदी</h3>
-                        <p>30 April 2026 • गुरुवार</p>
-                    </div>
-
-                    <div className="event-card featured">
-                        <h3>शुभ विवाह</h3>
-                        <p>01 May 2026 • शुक्रवार</p>
+                {/* Shayari Section */}
+                <section className="shayari-section reveal">
+                    <div className="shayari-card">
+                        <div className="shayari-glow"></div>
+                        <div className="quote-icon">
+                            <i className="fas fa-quote-left"></i>
+                        </div>
+                        <p className="shayari-text">
+                            <span>मिलन है दो परिवारों का रस्म है खुशी मनाने का,</span>
+                            <span>हमें तो इंतजार है, शादी में आपके आने का!</span>
+                        </p>
+                        <div className="shayari-decoration">
+                            <div className="decoration-line"></div>
+                            <i className="fas fa-spa"></i>
+                            <div className="decoration-line"></div>
+                        </div>
                     </div>
                 </section>
 
-                {/* Location */}
+                {/* Location Section */}
                 <section className="location-section reveal">
-                    <h2>दर्शन अभिलाषी / स्थान</h2>
-                    <p>
-                        ग्राम - अदखनी<br />
-                        पोस्ट - सुतिहारा, जिला - सीतामढ़ी<br />
-                        पिन - 843331
-                    </p>
+                    <div className="location-card">
+                        <div className="location-icon">
+                            <i className="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h2>दर्शन अभिलाषी / स्थान</h2>
+                        <p className="family-names">
+                            श्री राम नाथ सिंह<br />
+                            सुनील सिंह, नबिन सिंह, विद्यानन्द सिंह<br />
+                            रजनीश कुमार, अवनीश, साजन<br />
+                            देवराज, शिवराज, युवराज<br />
+                            <span className="family-all">एवं समस्त कुशवाहा परिवार</span>
+                        </p>
+                        <div className="location-divider"></div>
+                        <p className="address-full">
+                            ग्राम - अदखनी, पोस्ट - सुतिहारा<br />
+                            थाना - परिहार, जिला - सीतामढ़ी<br />
+                            पिन - 843331
+                        </p>
+                    </div>
                 </section>
 
-                {/* Note */}
+                {/* Note Section */}
                 <section className="note-section reveal">
-                    <h2>🔔 नोट:</h2>
-                    <p>
-                        मेरी शादी में आपका अपने परिवार के साथ पधारना अनिवार्य है!
-                        कृपया पधारकर मुझे और मेरी जीवनसंगिनी को अपना शुभ आशीर्वाद प्रदान करें।
-                        मुझे आपका बेसब्री से इंतज़ार रहेगा।
-                    </p>
+                    <div className="note-card">
+                        <i className="fas fa-bell bell-icon"></i>
+                        <h2>नोट:</h2>
+                        <p>
+                            बारात मेरे निवास स्थान अदखनी से संध्या 5 बजे हरिहरपुर के लिए प्रस्थान करेगी।
+                        </p>
+                    </div>
                 </section>
 
                 {/* Footer */}
                 <footer className="footer-section reveal">
+                    <div className="footer-divider"></div>
+
                     <h2>दर्शनाभिलाषी</h2>
-                    <p>
+                    <p className="footer-name">
                         आपका अपना<br />
                         <strong>रणधीर कुमार</strong><br />
                         (एवं समस्त परिवार)
                     </p>
 
                     <a href="tel:+917486862483" className="contact-btn">
-                        📞 +91 7486862483
+                        <i className="fas fa-phone-alt"></i> +917486862483
                     </a>
-
-                    <div className="creator-box">
-                        <p>क्या आप भी ऐसा डिजिटल निमंत्रण बनवाना चाहते हैं?</p>
-                        <a href="tel:+917061042974">📞 +91 7061042974</a>
-                    </div>
                     <GuestInvitation />
                 </footer>
             </div>

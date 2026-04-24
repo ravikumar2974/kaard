@@ -1,0 +1,326 @@
+/* GuestInvitation.css */
+
+/* Guest Invitation Wrapper */
+.invitation-wrapper {
+    width: 100%;
+    margin-top: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Guest Invitation Card */
+.guest-invitation {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 253, 208, 0.9) 100%);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 1.5rem;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 25px rgba(128, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.guest-invitation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+    transition: left 0.5s ease;
+}
+
+.guest-invitation:hover::before {
+    left: 100%;
+}
+
+.guest-invitation:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(128, 0, 0, 0.15);
+    border-color: rgba(212, 175, 55, 0.6);
+}
+
+/* Heading Style */
+.guest-invitation h3 {
+    font-size: 1.35rem;
+    font-weight: bold;
+    color: var(--maroon-600);
+    margin-bottom: 0.75rem;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.guest-invitation h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+    border-radius: 2px;
+}
+
+/* Paragraph Style */
+.guest-invitation p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--maroon-800);
+    margin-top: 0.5rem;
+    font-family: 'Noto Serif Devanagari', serif;
+}
+
+.guest-invitation strong {
+    color: var(--maroon-600);
+    font-size: 1.05rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.guest-invitation strong::before {
+    content: '✨';
+    font-size: 0.8rem;
+    margin-right: 4px;
+    opacity: 0.7;
+}
+
+.guest-invitation strong::after {
+    content: '✨';
+    font-size: 0.8rem;
+    margin-left: 4px;
+    opacity: 0.7;
+}
+
+/* Creator Box */
+.creator-box {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+}
+
+.creator-box:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.creator-box i.fa-seedling {
+    font-size: 1.5rem;
+    color: var(--gold-500);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    animation: gentleSway 3s ease-in-out infinite;
+}
+
+@keyframes gentleSway {
+
+    0%,
+    100% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+.creator-box p {
+    font-size: 0.8rem;
+    color: rgba(128, 0, 0, 0.6);
+    letter-spacing: 0.5px;
+}
+
+.creator-box i.fa-heart {
+    color: var(--maroon-500);
+    font-size: 0.75rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Creator Contact Section */
+.creator-contact {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(128, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.creator-text {
+    font-size: 0.85rem !important;
+    font-weight: 600;
+    color: var(--maroon-700) !important;
+    margin-bottom: 0.75rem;
+    font-family: 'Noto Serif Devanagari', serif;
+}
+
+.creator-text::before {
+    content: '🎁';
+    margin-right: 6px;
+    font-size: 0.9rem;
+}
+
+.creator-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--maroon-600), var(--maroon-700));
+    color: var(--cream);
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.creator-btn i {
+    font-size: 0.85rem;
+    animation: ring 2s ease infinite;
+}
+
+@keyframes ring {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: rotate(10deg);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: rotate(-8deg);
+    }
+}
+
+.creator-btn:hover {
+    background: linear-gradient(135deg, var(--maroon-700), var(--maroon-800));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(128, 0, 0, 0.25);
+    border-color: var(--gold-400);
+}
+
+.creator-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .guest-invitation {
+        padding: 1.25rem 1rem;
+    }
+
+    .guest-invitation h3 {
+        font-size: 1.15rem;
+    }
+
+    .guest-invitation p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .guest-invitation strong {
+        font-size: 0.95rem;
+    }
+
+    .creator-box {
+        padding: 1rem;
+    }
+
+    .creator-text {
+        font-size: 0.8rem !important;
+    }
+
+    .creator-btn {
+        padding: 8px 16px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Animation for fade in */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Optional: Add a subtle decorative border to the invitation */
+.guest-invitation::after {
+    content: '✿';
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 0.7rem;
+    color: var(--gold-400);
+    opacity: 0.4;
+    font-family: serif;
+}
+
+/* Language specific adjustments for Hindi text */
+.guest-invitation p[lang="hi"],
+.creator-text[lang="hi"] {
+    font-family: 'Noto Serif Devanagari', serif;
+}
+
+/* Dark mode support (optional - respects system preference) */
+@media (prefers-color-scheme: dark) {
+    .guest-invitation {
+        background: linear-gradient(135deg, rgba(30, 20, 20, 0.85), rgba(50, 30, 30, 0.9));
+    }
+
+    .guest-invitation h3,
+    .guest-invitation strong,
+    .creator-text {
+        color: var(--gold-400) !important;
+    }
+
+    .guest-invitation p {
+        color: #e0c8c8;
+    }
+
+    .creator-box {
+        background: rgba(30, 20, 20, 0.7);
+    }
+
+    .creator-text {
+        color: #e0c8c8 !important;
+    }
+}
