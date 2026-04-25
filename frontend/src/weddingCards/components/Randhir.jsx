@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Randhir.css";
+import { FaPause, FaMusic, FaChevronDown, FaCalendarAlt, FaOm, FaSpa, FaRing, FaMapMarkerAlt, FaHeart, FaQuoteLeft, FaBell, FaPhoneAlt } from "react-icons/fa";
+import { FaCalendar } from "react-icons/fa6";
+import { GiPrayer, GiLotus } from "react-icons/gi";
 
 import ganeshaImg from "./assets/image.png";
 import musicFile from "./assets/india_happy-indian-wedding-490659.mp3";
@@ -118,7 +121,7 @@ const Randhir = () => {
 
             {/* Music Button */}
             <button className="music-toggle" onClick={toggleMusic}>
-                <i className={`fas ${isPlaying ? "fa-pause" : "fa-music"}`}></i>
+                {isPlaying ? <FaPause /> : <FaMusic />}
             </button>
             <audio ref={audioRef} loop preload="none">
                 <source src={musicFile} type="audio/mpeg" />
@@ -148,14 +151,14 @@ const Randhir = () => {
 
                     <button className="scroll-indicator" onClick={scrollToEvents}>
                         <span>Scroll</span>
-                        <i className="fas fa-chevron-down"></i>
+                        <FaChevronDown />
                     </button>
                 </header>
 
                 {/* Events Section */}
                 <section id="events" className="events-section reveal">
                     <h2>
-                        <i className="fas fa-calendar-alt"></i> कार्यक्रम
+                        <FaCalendarAlt /> कार्यक्रम
                     </h2>
 
                     <div className="timeline">
@@ -163,12 +166,12 @@ const Randhir = () => {
 
                         <div className="event-card">
                             <div className="event-icon">
-                                <i className="fas fa-om"></i>
+                                <FaOm />
                             </div>
                             <div className="event-content">
                                 <h3>!! पूजा एवं मटकोर !!</h3>
                                 <p className="event-date">
-                                    <i className="far fa-calendar"></i> 27 April 2026
+                                    <FaCalendar /> 27 April 2026
                                 </p>
                                 <p className="event-day">सोमवार</p>
                             </div>
@@ -176,12 +179,12 @@ const Randhir = () => {
 
                         <div className="event-card">
                             <div className="event-icon">
-                                <i className="fas fa-spa"></i>
+                                <FaSpa />
                             </div>
                             <div className="event-content">
                                 <h3>!! हल्दी एवं मेहंदी !!</h3>
                                 <p className="event-date">
-                                    <i className="far fa-calendar"></i> 30 April 2026
+                                    <FaCalendar /> 30 April 2026
                                 </p>
                                 <p className="event-day">गुरुवार</p>
                             </div>
@@ -189,12 +192,12 @@ const Randhir = () => {
 
                         <div className="event-card featured">
                             <div className="event-icon pulse">
-                                <i className="fas fa-ring"></i>
+                                <FaRing />
                             </div>
                             <div className="event-content">
                                 <h3>!! शुभ विवाह !!</h3>
                                 <p className="event-date">
-                                    <i className="far fa-calendar"></i> 01 May 2026
+                                    <FaCalendar /> 01 May 2026
                                 </p>
                                 <p className="event-day">शुक्रवार</p>
                             </div>
@@ -216,7 +219,7 @@ const Randhir = () => {
 
                         <div className="address-card">
                             <div className="address-header">
-                                <i className="fas fa-map-marker-alt"></i>
+                                <FaMapMarkerAlt />
                                 <span>स्थाई पता</span>
                             </div>
                             <div className="address-details">
@@ -241,7 +244,7 @@ const Randhir = () => {
                     </div>
 
                     <div className="heart-divider">
-                        <i className="fas fa-heart"></i>
+                        <FaHeart />
                     </div>
 
                     <div className="person-card">
@@ -254,7 +257,7 @@ const Randhir = () => {
 
                         <div className="address-card">
                             <div className="address-header">
-                                <i className="fas fa-map-marker-alt"></i>
+                                <FaMapMarkerAlt />
                                 <span>स्थाई पता</span>
                             </div>
                             <div className="address-details">
@@ -284,7 +287,7 @@ const Randhir = () => {
                     <div className="shayari-card">
                         <div className="shayari-glow"></div>
                         <div className="quote-icon">
-                            <i className="fas fa-quote-left"></i>
+                            <FaQuoteLeft />
                         </div>
                         <p className="shayari-text">
                             <span>मिलन है दो परिवारों का रस्म है खुशी मनाने का,</span>
@@ -292,7 +295,7 @@ const Randhir = () => {
                         </p>
                         <div className="shayari-decoration">
                             <div className="decoration-line"></div>
-                            <i className="fas fa-spa"></i>
+                            <FaSpa />
                             <div className="decoration-line"></div>
                         </div>
                     </div>
@@ -302,7 +305,7 @@ const Randhir = () => {
                 <section className="location-section reveal">
                     <div className="location-card">
                         <div className="location-icon">
-                            <i className="fas fa-map-marker-alt"></i>
+                            <FaMapMarkerAlt />
                         </div>
                         <h2>दर्शन अभिलाषी / स्थान</h2>
                         <p className="family-names">
@@ -324,7 +327,7 @@ const Randhir = () => {
                 {/* Note Section */}
                 <section className="note-section reveal">
                     <div className="note-card">
-                        <i className="fas fa-bell bell-icon"></i>
+                        <FaBell className="bell-icon" />
                         <h2>नोट:</h2>
                         <p>
                             बारात मेरे निवास स्थान अदखनी से संध्या 5 बजे हरिहरपुर के लिए प्रस्थान करेगी।
@@ -344,7 +347,7 @@ const Randhir = () => {
                     </p>
 
                     <a href="tel:+917486862483" className="contact-btn">
-                        <i className="fas fa-phone-alt"></i> +917486862483
+                        <FaPhoneAlt /> +917486862483
                     </a>
                     <GuestInvitation />
                 </footer>
