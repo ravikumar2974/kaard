@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './TemplateGallery.css'; // Assuming you will add CSS for the grid
+import './TemplateGallery.css';
 
 function TemplateGallery() {
   const navigate = useNavigate();
